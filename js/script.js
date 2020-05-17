@@ -41,6 +41,34 @@ function showPage (list, page) {
 
 // Create the `appendPageLinks function` to generate, append, and add 
 // functionality to the pagination buttons.
-//function appendPageLinks () {}
-// 
 
+
+function appendPageLinks (list) {
+  let pageDiv = document.createElement(".page");
+  let paginationDiv = document.createElement('div');
+  paginationDiv.className = "pagination";
+  let ul = document.createElement("ul");
+  pageDiv.appendChild(paginationDiv);
+  paginationDiv.appendChild(ul);
+  let pageNumber = Math.ceil(list.length / itemsPerPage);
+  
+  for (j = 0; j < pageNumber; j++) {
+   let li = document.createElement("li");
+   ul.appendChild(li);
+   let a = document.createElement("a");
+   li.appendChild(a);
+   
+
+
+  }
+
+
+}
+
+
+
+
+
+
+li
+a href
