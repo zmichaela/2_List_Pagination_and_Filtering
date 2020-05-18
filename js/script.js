@@ -22,7 +22,7 @@ function showPage (list, page) {
       listItem[i].style.display = "none";
      }
    }
-}
+};
 
 
 // A function that will generate, append, and add functionality to the pagination buttons.
@@ -30,49 +30,44 @@ function appendPageLinks (list) {
   let pageDiv = document.querySelector(".page"); 
   let paginationDiv = document.createElement("div"); //created a dynamic page structure - div, ul, li & a
   paginationDiv.className = "pagination";
-  pageDiv.appendChild(paginationDiv);
+  pageDiv.appendChild(paginationDiv); //appended paginationDiv to pageDiv
   let pageUL = document.createElement("ul");
-  paginationDiv.appendChild(pageUL);
-  let pageNumber = Math.ceil(list.length / itemsPerPage); // calculate the number of pages needed
+  paginationDiv.appendChild(pageUL); //appended UL to paginationDiv 
+  let pageNumber = Math.ceil(list.length / itemsPerPage); // calculated the number of pages needed
 
-  for (j = 1; j < pageNumber; j++) {
+  for (j = 1; j < pageNumber; j++) { //loop to create an LI for every 10 students
    let pageLI = document.createElement("li");
    let pageA = document.createElement("a");
-   pageLI.appendChild(pageA);
-   pageUL.appendChild(pageLI);
+   pageLI.appendChild(pageA); //appended A to LI
+   pageUL.appendChild(pageLI); //appended LI to UL
    pageA.href = "#";
    pageA.innerHTML = `${j}`;
-  };
+  
+   //set first page as active
+   if (j === 1) {
+    pageA.className = "active";
+   };
 
-  pageA[0].className = "active";
-  //https://developer.mozilla.org/en-US/docs/Web/API/Event/target event target resources
-  pageA.addEventListener("click", (e) => {
+   showPage(listItem, 1);
+
+  //on button click, dusplay the correct page and change the correct className to active
+   pageA.addEventListener("click", (e) => {
     for (let k = 0; k < pageA.length; k++) {
-      pageA[k].classname = "";
-      e.target.className = "active";
+      pageA[k].classList.remove = "active";
+      //pageA[k].className = "";
     }
-  })
+      e.target.className = "active";
+      showPage(listItem, e.target);
+    });
+  }
 };
 
+//https://developer.mozilla.org/en-US/docs/Web/API/Event/target event target resources
 
-showPage(listItem, 1);
+
+showPage (listItem, 1)
+
 appendPageLinks (listItem);
 
-/*
-Add a “click” event listener to each A element. 
-A loop can be helpful here.
-When a pagination link is clicked:
-The active class name should be removed from all pagination links. 
-A loop can be helpful for this step.
 
-The active class name should be added to the link that was just clicked. 
-The target property of the event object should be useful here.
-The function to show a page should be called, passing in as arguments, 
-the global variable for the list items, and the page number that should be shown. 
-The text content of the 
-A element that was just clicked can be helpful here.
-
-*/
-
-//showPage(listItem, 1);
 
