@@ -35,16 +35,16 @@ function appendPageLinks (list) {
   paginationDiv.appendChild(pageUL); //appended UL to paginationDiv 
   let pageNumber = Math.ceil(list.length / itemsPerPage); // calculated the number of pages needed
 
-  for (j = 1; j < pageNumber; j++) { //loop to create an LI for every 10 students
+  for (j = 0; j < pageNumber; j++) { //loop to create an LI for every 10 students
    let pageLI = document.createElement("li");
    let pageA = document.createElement("a");
    pageLI.appendChild(pageA); //appended A to LI
    pageUL.appendChild(pageLI); //appended LI to UL
    pageA.href = "#";
-   pageA.innerHTML = `${j}`;
+   pageA.innerHTML = `${j + 1}`;
   
    //set first page as active
-   if (j === 1) {
+   if (j === 0) {
     pageA.className = "active";
    };
 
@@ -52,12 +52,12 @@ function appendPageLinks (list) {
 
   //on button click, dusplay the correct page and change the correct className to active
    pageA.addEventListener("click", (e) => {
-    for (let k = 0; k < pageA.length; k++) {
-      pageA[k].classList.remove = "active";
+    for (let k = 0; k <= pageA.length; k++) {
+      pageA[k].classList.remove("active");
       //pageA[k].className = "";
     }
       e.target.className = "active";
-      showPage(listItem, e.target);
+      showPage(listItem, e.target.innerHTML);
     });
   }
 };
