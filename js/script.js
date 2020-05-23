@@ -44,23 +44,23 @@ function appendPageLinks (list) {
    pageA.innerHTML = `${j + 1}`;
   
    //set first page as active
-   if (j === 0) {
-    pageA.className = "active";
+   if (pageA.innerHTML == 1) {
+     pageA.className = "active";
    };
-
+ 
    showPage(listItem, 1);
 
-  //on button click, dusplay the correct page and change the correct className to active
+  //on button click, display the correct page and change the correct className to active
    pageA.addEventListener("click", (e) => {
-    for (let k = 0; k <= pageA.length; k++) {
-      pageA[k].classList.remove("active");
-      //pageA[k].className = "";
-    }
-      e.target.className = "active";
-      showPage(listItem, e.target.innerHTML);
-    });
+    let allAnchors = document.querySelectorAll(".pagination a");
+    for (let k = 0; k < pageA.length; k++) { 
+      allAnchors[k].classList.remove("active"); 
+    } 
+    showPage(listItem, e.target.innerHTML);
+    e.target.className = "active"; //changes class on the linked we clicked on to active  
+    })
   }
-};
+}
 
 //https://developer.mozilla.org/en-US/docs/Web/API/Event/target event target resources
 
@@ -69,5 +69,5 @@ showPage (listItem, 1)
 
 appendPageLinks (listItem);
 
-
+   // let allAnchors = document.querySelectorAll("[href='#']");
 
