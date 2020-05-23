@@ -53,7 +53,7 @@ function appendPageLinks (list) {
   //on button click, display the correct page and change the correct className to active
    pageA.addEventListener("click", (e) => {
     let allAnchors = document.querySelectorAll(".pagination a");
-    for (let k = 0; k < pageA.length; k++) { 
+    for (let k = 0; k < allAnchors.length; k++) { 
       allAnchors[k].classList.remove("active"); 
     } 
     showPage(listItem, e.target.innerHTML);
