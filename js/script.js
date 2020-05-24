@@ -3,19 +3,17 @@ Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
    
-// Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
-
 const listItem = document.getElementsByClassName("student-item cf"); // list of students
 //console.log(listItem);
 
 const itemsPerPage = 10; //number of items displayed per page
 
 
-// a function that will only show the ten items we want to show, the rest will be hidden
+// a function that will only show the 10 stdents we want to show, the rest will be hidden
 function showPage (list, page) {
    const startIndex = (page * itemsPerPage) - itemsPerPage;
    const endIndex = page * itemsPerPage;
-   for (i = 0; i < list.length; i++) {
+   for (i = 0; i < list.length; i++) { //looping through the student list
     if (i >= startIndex && i < endIndex) {
       listItem[i].style.display = "";
    } else {
@@ -41,7 +39,7 @@ function appendPageLinks (list) {
    pageLI.appendChild(pageA); //appended A to LI
    pageUL.appendChild(pageLI); //appended LI to UL
    pageA.href = "#";
-   pageA.innerHTML = `${j + 1}`;
+   pageA.innerHTML = `${j + 1}`; //assigned number to the links (page buttons)
   
    //set first page as active
    if (pageA.innerHTML == 1) {
@@ -53,21 +51,19 @@ function appendPageLinks (list) {
   //on button click, display the correct page and change the correct className to active
    pageA.addEventListener("click", (e) => {
     let allAnchors = document.querySelectorAll(".pagination a");
-    for (let k = 0; k < allAnchors.length; k++) { 
+    for (let k = 0; k < allAnchors.length; k++) {   //removes "active" class from all anchor links (page buttons) 
       allAnchors[k].classList.remove("active"); 
     } 
-    showPage(listItem, e.target.innerHTML);
-    e.target.className = "active"; //changes class on the linked we clicked on to active  
+    showPage(listItem, e.target.innerHTML); //show the page we clicked on
+    e.target.className = "active"; //changes class of the anchor link (page button) we clicked on to "active"
     })
   }
 }
 
-//https://developer.mozilla.org/en-US/docs/Web/API/Event/target event target resources
-
-
+//calling the functions
 showPage (listItem, 1)
 
 appendPageLinks (listItem);
 
-   // let allAnchors = document.querySelectorAll("[href='#']");
+
 

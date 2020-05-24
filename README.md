@@ -13,4 +13,4 @@ The first one called showPage allowing me to hide all the students except for th
 The second function called appendPageLinks which creates and appends functioning pagination links (buttons).
 
 
-Skills: DOM manipulations, functions
+Skills including: DOM manipulations, event & eventListener, functions
